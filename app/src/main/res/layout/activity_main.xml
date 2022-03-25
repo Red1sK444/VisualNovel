@@ -24,7 +24,7 @@
         android:textAllCaps="false"
         android:textStyle="normal"
         android:layout_height="wrap_content"
-        android:text="Привет! Меня зовут Кирюша. А тебя?"
+        android:text="Моя визуальная новелла"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

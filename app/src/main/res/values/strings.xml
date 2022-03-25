@@ -1,3 +1,71 @@
 <resources>
     <string name="app_name">VisualNovel</string>
+
+    <!-- 1 -->
+    <string name="my_visual_novel">Моя визуальная новелла</string>
+    <string name="start">Начать</string>
+    <!-- -->
+
+    <!-- 2 -->
+    <string name="hello_i_am_kiryusha">Привет! Меня зовут Кирюша. А тебя?</string>
+    <string name="name_placeholder">Введите свое имя..\.</string>
+    <string name="confirm">Подтвердить</string>
+    <!-- -->
+
+    <!-- 3 -->
+    <string name="what_we_gonna_do">Отлично, %s! Чем займемся?</string>
+    <string name="go_to_jogging">Пойдем на пробежку</string>
+    <string name="go_to_camping">Пойдем в поход</string>
+    <string name="lets_take_a_walk">Погуляем по полю</string>
+    <!-- -->
+
+    <!-- 4 -->
+    <string name="maybe_go_home">Может, пойдем домой?..</string>
+    <string name="lets_watch_film">Да, и посмотрим фильм</string>
+    <string name="lets_celebrate_halloween">Да, и отпразднуем хэллоуин</string>
+    <!-- -->
+
+    <!-- 5 -->
+    <string name="cosy_but_dark">Как уютно..\. Но уже темнеет.</string>
+    <string name="go_home_and_watch_film">Пойдем домой и посмотрим фильм</string>
+    <string name="go_home_and_celebrate_halloween">Пойдем домой и отпразднуем Хэллоуин</string>
+    <!-- -->
+
+    <!-- 6 -->
+    <string name="you_are_sad_go_home">Тебе грустно..\. Пойдем домой?</string>
+    <string name="maybe_watch_film">Может, посмотрим фильм?</string>
+    <string name="and_lets_celebrate_halloween">Да, и отпразднуем Хэллоуин</string>
+    <!-- -->
+
+    <!-- 7 -->
+    <string name="how_the_film">Как тебе фильм?</string>
+    <string name="i_like_it">Мне понравился!</string>
+    <string name="not_very">Не очень..\.</string>
+    <!-- -->
+
+    <!-- 8 -->
+    <string name="very_beautiful">Получается очень красиво!</string>
+    <string name="yes_maybe_watch_film">Да! Может, посмотрим фильм?</string>
+    <string name="lets_make_costumes">Да! Давай сделаем костюмы!</string>
+    <!-- -->
+
+    <!-- 9-10, 12-13 -->
+    <string name="nice_lets_go_to_sleep">Отлично! А теперь пора спать..\.</string>
+    <string name="pity_lets_go_to_sleep">Жаль..\. Тогда пойдем спать?</string>
+    <string name="thanks_go_to_sleep">Спасибо! Ну, пойдем спать?</string>
+    <string name="nonsense_go_to_sleep">Ничего, я не в обиде. Пойдем спать?</string>
+    <string name="yes_already_late">Да, уже поздно..\.</string>
+    <!-- -->
+
+    <!-- 11 -->
+    <string name="i_like_your_costume">Мне нравится твой костюм.</string>
+    <string name="your_are_beautiful_too">Твой тоже очень красивый!</string>
+    <string name="your_are_not_beautiful">А мне, если честно, не нравится твой..\.</string>
+    <!-- -->
+
+    <!-- 14 -->
+    <string name="thanks_for_playing">Спасибо, что поиграли!</string>
+    <string name="try_again">Пройти еще раз</string>
+    <!-- -->
+
 </resources>

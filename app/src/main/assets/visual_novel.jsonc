@@ -1,0 +1,191 @@
+[
+    {
+        "id": 1,
+        "message": "Моя визуальная новелла",
+        "screenType": "Preview",
+        "background": "bg_preview",
+        "actions": [
+            {
+                "message": "Начать",
+                "toScreen": 2
+            }
+        ]  
+    },
+    {
+        "id": 2,
+        "message": "Привет! Меня зовут Кирюша. А тебя?",
+        "screenType": "InputName",
+        "background": "bg_room",
+        "actions": [
+            {
+                "message": "Подтвердить",
+                "toScreen": 3
+            }
+        ]  
+    },
+    {
+        "id": 3,
+        "message": "Отлично, %s! Чем займемся?",
+        "background": "bg_room",
+        "actions": [
+            {
+                "message": "Пойдем на пробежку",
+                "toScreen": 4
+            },
+            {
+                "message": "Пойдем в поход",
+                "toScreen": 5
+            },
+            {
+                "message": "Погуляем по полю",
+                "toScreen": 6
+            }
+        ]  
+    },
+    {
+        "id": 4,
+        "message": "Может, пойдем домой?..",
+        "background": "bg_jogging",
+        "actions": [
+            {
+                "message": "Да, и посмотрим фильм",
+                "toScreen": 7
+            },
+            {
+                "message": "Да, и отпразднуем хэллоуин",
+                "toScreen": 8
+            }
+        ]  
+    },
+    {
+        "id": 5,
+        "message": "Как уютно... Но уже темнеет.",
+        "background": "bg_camping",
+        "actions": [
+            {
+                "message": "Пойдем домой и посмотрим фильм",
+                "toScreen": 7
+            },
+            {
+                "message": "Пойдем домой и отпразднуем Хэллоуин",
+                "toScreen": 8
+            }
+        ]  
+    },
+    {
+        "id": 6,
+        "message": "Тебе грустно... Пойдем домой?",
+        "background": "bg_fishing",
+        "actions": [
+            {
+                "message": "Может, посмотрим фильм?",
+                "toScreen": 7
+            },
+            {
+                "message": "Да, отпразднуем Хэллоуин",
+                "toScreen": 8
+            }
+        ]  
+    },
+    {
+        "id": 7,
+        "message": "Как тебе фильм?",
+        "background": "bg_film",
+        "actions": [
+            {
+                "message": "Мне понравился!",
+                "toScreen": 9
+            },
+            {
+                "message": "Не очень...",
+                "toScreen": 10
+            }
+        ]  
+    },
+    {
+        "id": 8,
+        "message": "Получается очень красиво!",
+        "background": "bg_halloween",
+        "actions": [
+            {
+                "message": "Да! Может, посмотрим фильм?",
+                "toScreen": 7
+            },
+            {
+                "message": "Да! Давай сделаем костюмы!",
+                "toScreen": 11
+            }
+        ]  
+    },
+    {
+        "id": 9,
+        "message": "Отлично! А теперь пора спать...",
+        "background": "bg_film",
+        "actions": [
+            {
+                "message": "Да, уже поздно...",
+                "toScreen": 14
+            }
+        ]  
+    },
+    {
+        "id": 10,
+        "message": "Жаль... Тогда пойдем спать?",
+        "background": "bg_film",
+        "actions": [
+            {
+                "message": "Да, уже поздно...",
+                "toScreen": 14
+            }
+        ]  
+    },
+    {
+        "id": 11,
+        "message": "Мне нравится твой костюм.",
+        "background": "bg_costumes",
+        "actions": [
+            {
+                "message": "Твой тоже очень красивый!",
+                "toScreen": 12
+            },
+            {
+                "message": "А мне, если честно, не нравится твой...",
+                "toScreen": 13
+            }
+        ]  
+    },
+    {
+        "id": 12,
+        "message": "Спасибо! Ну, пойдем спать?",
+        "background": "bg_costumes",
+        "actions": [
+            {
+                "message": "Да, уже поздно...",
+                "toScreen": 14
+            }
+        ]  
+    },
+    {
+        "id": 13,
+        "message": "Ничего, я не в обиде. Пойдем спать?",
+        "background": "bg_costumes",
+        "actions": [
+            {
+                "message": "Да, уже поздно...",
+                "toScreen": 14
+            }
+        ]  
+    },
+    {
+        "id": 14,
+        "message": "Спасибо, что поиграли!",
+        "screenType": "Preview",
+        "background": "bg_preview",
+        "actions": [
+            {
+                "message": "Пройти еще раз",
+                "toScreen": 1
+            }
+        ]  
+    }
+]

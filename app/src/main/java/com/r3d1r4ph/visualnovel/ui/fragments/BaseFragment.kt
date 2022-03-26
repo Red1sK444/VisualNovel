@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionInflater
 import androidx.viewbinding.ViewBinding
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.domain.Screen
@@ -25,6 +26,14 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
 
     private val viewModel by viewModels<ScreenViewModel>()
     protected abstract val viewBinding: ViewBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val inflater = TransitionInflater.from(requireContext())
+        exitTransition = inflater.inflateTransition(R.transition.fade)
+        enterTransition = inflater.inflateTransition(R.transition.slide_right)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

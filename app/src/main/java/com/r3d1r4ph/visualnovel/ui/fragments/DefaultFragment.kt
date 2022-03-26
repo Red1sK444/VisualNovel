@@ -35,6 +35,5 @@ class DefaultFragment : BaseFragment(R.layout.fragment_default) {
                 }
             }
         }
-
     }
 }

@@ -6,19 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.PreviewFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/previewTitleTextView"
+        style="@style/Base.Widget.MaterialComponents.TextView.Preview"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="PREVIEW"
+        app:layout_constraintBottom_toTopOf="@+id/previewButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/previewButton"
+        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Message"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/previewTitleTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

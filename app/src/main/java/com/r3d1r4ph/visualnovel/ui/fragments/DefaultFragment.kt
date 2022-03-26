@@ -7,9 +7,10 @@ import com.r3d1r4ph.visualnovel.domain.Screen
 
 class DefaultFragment : BaseFragment(R.layout.fragment_default) {
 
-    private val viewBinding by viewBinding(FragmentDefaultBinding::bind)
+    override val viewBinding by viewBinding(FragmentDefaultBinding::bind)
 
     override fun initViewByScreen(screen: Screen) {
+        super.initViewByScreen(screen)
 
     }
 }

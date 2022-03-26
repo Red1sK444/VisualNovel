@@ -7,9 +7,10 @@ import com.r3d1r4ph.visualnovel.domain.Screen
 
 class InputFragment : BaseFragment(R.layout.fragment_input) {
 
-    private val viewBinding by viewBinding(FragmentInputBinding::bind)
+    override val viewBinding by viewBinding(FragmentInputBinding::bind)
 
     override fun initViewByScreen(screen: Screen) {
+        super.initViewByScreen(screen)
 
     }
 }

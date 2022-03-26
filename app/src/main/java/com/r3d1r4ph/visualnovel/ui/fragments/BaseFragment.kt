@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.viewbinding.ViewBinding
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.domain.Screen
 import com.r3d1r4ph.visualnovel.domain.ScreenTypes
@@ -22,6 +23,7 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
     }
 
     private val viewModel by viewModels<ScreenViewModel>()
+    protected abstract val viewBinding: ViewBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,7 +41,11 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
         }
     }
 
-    protected abstract fun initViewByScreen(screen: Screen)
+    protected open fun initViewByScreen(screen: Screen) = with(viewBinding) {
+        val resId =
+            resources.getIdentifier(screen.background, "drawable", requireActivity().packageName)
+        root.setBackgroundResource(resId)
+    }
 
     protected fun navigateByScreenId(screenId: Int) {
         determineFragmentByType(screenId)?.let { fragmentId ->

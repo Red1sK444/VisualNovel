@@ -2,7 +2,7 @@
     {
         "id": 1,
         "message": "Моя визуальная новелла",
-        "screenType": "Preview",
+        "screenType": "PREVIEW",
         "background": "bg_preview",
         "actions": [
             {
@@ -14,7 +14,7 @@
     {
         "id": 2,
         "message": "Привет! Меня зовут Кирюша. А тебя?",
-        "screenType": "InputName",
+        "screenType": "INPUT",
         "background": "bg_room",
         "actions": [
             {
@@ -26,6 +26,7 @@
     {
         "id": 3,
         "message": "Отлично, %s! Чем займемся?",
+        "screenType": "DEFAULT",
         "background": "bg_room",
         "actions": [
             {
@@ -45,6 +46,7 @@
     {
         "id": 4,
         "message": "Может, пойдем домой?..",
+        "screenType": "DEFAULT",
         "background": "bg_jogging",
         "actions": [
             {
@@ -60,6 +62,7 @@
     {
         "id": 5,
         "message": "Как уютно... Но уже темнеет.",
+        "screenType": "DEFAULT",
         "background": "bg_camping",
         "actions": [
             {
@@ -75,6 +78,7 @@
     {
         "id": 6,
         "message": "Тебе грустно... Пойдем домой?",
+        "screenType": "DEFAULT",
         "background": "bg_fishing",
         "actions": [
             {
@@ -90,6 +94,7 @@
     {
         "id": 7,
         "message": "Как тебе фильм?",
+        "screenType": "DEFAULT",
         "background": "bg_film",
         "actions": [
             {
@@ -105,6 +110,7 @@
     {
         "id": 8,
         "message": "Получается очень красиво!",
+        "screenType": "DEFAULT",
         "background": "bg_halloween",
         "actions": [
             {
@@ -120,6 +126,7 @@
     {
         "id": 9,
         "message": "Отлично! А теперь пора спать...",
+        "screenType": "DEFAULT",
         "background": "bg_film",
         "actions": [
             {
@@ -131,6 +138,7 @@
     {
         "id": 10,
         "message": "Жаль... Тогда пойдем спать?",
+        "screenType": "DEFAULT",
         "background": "bg_film",
         "actions": [
             {
@@ -142,6 +150,7 @@
     {
         "id": 11,
         "message": "Мне нравится твой костюм.",
+        "screenType": "DEFAULT",
         "background": "bg_costumes",
         "actions": [
             {
@@ -157,6 +166,7 @@
     {
         "id": 12,
         "message": "Спасибо! Ну, пойдем спать?",
+        "screenType": "DEFAULT",
         "background": "bg_costumes",
         "actions": [
             {
@@ -168,6 +178,7 @@
     {
         "id": 13,
         "message": "Ничего, я не в обиде. Пойдем спать?",
+        "screenType": "DEFAULT",
         "background": "bg_costumes",
         "actions": [
             {
@@ -179,7 +190,7 @@
     {
         "id": 14,
         "message": "Спасибо, что поиграли!",
-        "screenType": "Preview",
+        "screenType": "PREVIEW",
         "background": "bg_preview",
         "actions": [
             {

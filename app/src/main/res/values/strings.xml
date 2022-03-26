@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">VisualNovel</string>
-    <string name="load_screen_exception">Screens don\'t loaded</string>
+    <string name="load_screen_exception">Страницы не загрузились</string>
+    <string name="empty_name">Пустое имя</string>
+    <string name="empty" />
 
     <!-- 1 -->
     <string name="my_visual_novel">Моя визуальная новелла</string>

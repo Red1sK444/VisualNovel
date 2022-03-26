@@ -18,6 +18,9 @@
         "background": "bg_room",
         "actions": [
             {
+                "message": "Введите свое имя..."
+            },
+            {
                 "message": "Подтвердить",
                 "toScreen": 3
             }

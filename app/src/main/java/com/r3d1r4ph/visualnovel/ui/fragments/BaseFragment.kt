@@ -20,6 +20,7 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
 
     companion object {
         const val SCREEN_ID = "Screen Id"
+        const val NAME_ID = "Name Id"
     }
 
     private val viewModel by viewModels<ScreenViewModel>()
@@ -47,12 +48,15 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
         root.setBackgroundResource(resId)
     }
 
-    protected fun navigateByScreenId(screenId: Int) {
+    protected fun navigateByScreenId(screenId: Int, name: String? = null) {
         determineFragmentByType(screenId)?.let { fragmentId ->
             findNavController().apply {
                 popBackStack()
                 navigate(fragmentId, args = Bundle().apply {
                     putInt(SCREEN_ID, screenId)
+                    name?.let {
+                        putString(NAME_ID, it)
+                    }
                 })
             }
         }

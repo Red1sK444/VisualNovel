@@ -8,7 +8,7 @@ class ScreenDataSourceImpl @Inject constructor(
     @ApplicationContext private val applicationContext: Context
 ) : ScreenDataSource {
 
-    private val screenList = listOf<Screen>()
+    private val screenList = mutableListOf<Screen>()
 
     override fun getScreenById(id: Int): ResultWrapper<Screen> {
         if (screenList.isEmpty()) {
@@ -25,6 +25,8 @@ class ScreenDataSourceImpl @Inject constructor(
     private fun loadScreenList() {
         val jsonString =
             JsonController.getJsonDataFromAsset(applicationContext, "visual_novel.jsonc")
-        screenList.plus(jsonString?.let { JsonController.parseJsonToObjectByType<List<Screen>>(it) })
+        jsonString?.let {
+            JsonController.parseJsonToObjectByType<List<Screen>>(it).toList()
+        }?.let { screenList.addAll(it) }
     }
 }

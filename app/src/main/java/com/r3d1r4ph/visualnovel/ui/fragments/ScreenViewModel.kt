@@ -1,4 +1,4 @@
-package com.r3d1r4ph.visualnovel.ui
+package com.r3d1r4ph.visualnovel.ui.fragments
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ScreenViewModel @Inject constructor(
+open class ScreenViewModel @Inject constructor(
     private val screenDataSource: ScreenDataSource
 ) : ViewModel() {
 

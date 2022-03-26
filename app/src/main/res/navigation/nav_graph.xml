@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/previewFragment"
-        android:name="com.r3d1r4ph.visualnovel.ui.fragments.PreviewFragment"
+        android:name="com.r3d1r4ph.visualnovel.ui.fragments.preview.PreviewFragment"
         android:label="fragment_preview"
         tools:layout="@layout/fragment_preview" />
     <fragment
         android:id="@+id/inputFragment"
-        android:name="com.r3d1r4ph.visualnovel.ui.fragments.InputFragment"
+        android:name="com.r3d1r4ph.visualnovel.ui.fragments.input.InputFragment"
         android:label="fragment_input"
         tools:layout="@layout/fragment_input" />
     <fragment
         android:id="@+id/defaultFragment"
-        android:name="com.r3d1r4ph.visualnovel.ui.fragments.DefaultFragment"
+        android:name="com.r3d1r4ph.visualnovel.ui.fragments.defaults.DefaultFragment"
         android:label="fragment_default"
         tools:layout="@layout/fragment_default" />
 </navigation>

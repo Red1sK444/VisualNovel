@@ -13,7 +13,6 @@ import androidx.viewbinding.ViewBinding
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.domain.Screen
 import com.r3d1r4ph.visualnovel.domain.ScreenTypes
-import com.r3d1r4ph.visualnovel.ui.ScreenViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +23,7 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
         const val NAME_ID = "Name Id"
     }
 
-    private val viewModel by viewModels<ScreenViewModel>()
+    protected open val viewModel by viewModels<ScreenViewModel>()
     protected abstract val viewBinding: ViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

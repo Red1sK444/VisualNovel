@@ -24,8 +24,6 @@ class JsonController {
             Log.i("dataaa", jsonFileString)
 
             val objectTypeToken = object : TypeToken<T>() {}.type
-
-            //screens.forEachIndexed { index, screen -> Log.i("dataaa", "> Item $index:\n$screen") }
             return Gson().fromJson(jsonFileString, objectTypeToken)
         }
     }

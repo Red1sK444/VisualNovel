@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VisualNovel</string>
+    <string name="app_name">Визуальная Новелла</string>
     <string name="load_screen_exception">Страницы не загрузились</string>
     <string name="empty_name">Пустое имя</string>
     <string name="empty" />

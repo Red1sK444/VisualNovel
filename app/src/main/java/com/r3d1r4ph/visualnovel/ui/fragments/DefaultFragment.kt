@@ -17,9 +17,9 @@ class DefaultFragment : BaseFragment(R.layout.fragment_default) {
         defaultMessageTextView.text =
             if (screen.id == 3) {
                 val name: String = arguments?.getString(NAME_ID) ?: getString(R.string.empty)
-                String.format(screen.message, name)
+                getStringByResourceName(screen.message, name)
             } else {
-                screen.message
+                getStringByResourceName(screen.message)
             }
 
         actionGroup.referencedIds.forEachIndexed { index, id ->
@@ -28,7 +28,7 @@ class DefaultFragment : BaseFragment(R.layout.fragment_default) {
                 with(actionButton) {
                     visibility = View.VISIBLE
 
-                    text = screen.actions[index].message
+                    text = getStringByResourceName(screen.actions[index].message)
                     setOnClickListener {
                         navigateByScreenId(screen.actions[index].toScreen)
                     }

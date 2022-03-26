@@ -13,8 +13,8 @@ class PreviewFragment : BaseFragment(R.layout.fragment_preview) {
     override fun initViewByScreen(screen: Screen) = with(viewBinding) {
         super.initViewByScreen(screen)
 
-        previewTitleTextView.text = screen.message
-        previewButton.text = screen.actions[0].message
+        previewTitleTextView.text = getStringByResourceName(screen.message)
+        previewButton.text = getStringByResourceName(screen.actions[0].message)
 
         previewButton.setOnClickListener {
             navigateByScreenId(screen.actions[0].toScreen)

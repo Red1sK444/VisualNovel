@@ -57,6 +57,15 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
         root.setBackgroundResource(resId)
     }
 
+    protected fun getStringByResourceName(resourceName: String, parameter: String? = null): String {
+        val idField = R.string::class.java.getDeclaredField(resourceName)
+        return if (parameter == null) {
+            getString(idField.getInt(idField))
+        } else {
+            getString(idField.getInt(idField), parameter)
+        }
+    }
+
     protected fun navigateByScreenId(screenId: Int, name: String? = null) {
         determineFragmentByType(screenId)?.let { fragmentId ->
             findNavController().apply {

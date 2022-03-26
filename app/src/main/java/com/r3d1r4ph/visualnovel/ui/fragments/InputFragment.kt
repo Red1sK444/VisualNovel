@@ -18,10 +18,10 @@ class InputFragment : BaseFragment(R.layout.fragment_input) {
             inputTextInputLayout.isErrorEnabled = false
         }
 
-        inputMessageTextView.text = screen.message
+        inputMessageTextView.text = getStringByResourceName(screen.message)
 
-        inputTextInputEditText.hint = screen.actions[0].message
-        inputConfirmButton.text = screen.actions[1].message
+        inputTextInputEditText.hint = getStringByResourceName(screen.actions[0].message)
+        inputConfirmButton.text = getStringByResourceName(screen.actions[1].message)
 
         inputConfirmButton.setOnClickListener {
             val name = inputTextInputEditText.text.toString()

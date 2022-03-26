@@ -10,6 +10,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         window.navigationBarColor = ContextCompat.getColor(this, R.color.black)
 
-        JsonReader.getJsonDataFromAsset(this, "visual_novel.jsonc")
+        JsonController.getJsonDataFromAsset(this, "visual_novel.jsonc")
     }
 }

@@ -6,7 +6,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
 
-class JsonReader {
+class JsonController {
 
     companion object {
         fun getJsonDataFromAsset(context: Context, fileName: String): String? {
@@ -17,16 +17,16 @@ class JsonReader {
                 ioException.printStackTrace()
                 return null
             }
-            parseJson(jsonString)
             return jsonString
         }
 
-        private fun parseJson(jsonFileString: String) {
+        fun <T> parseJsonToObjectByType(jsonFileString: String): T {
             Log.i("dataaa", jsonFileString)
-            val gson = Gson()
-            val listScreenType = object : TypeToken<List<Screen>>() {}.type
-            val screens: List<Screen> = gson.fromJson(jsonFileString, listScreenType)
-            screens.forEachIndexed { index, screen -> Log.i("dataaa", "> Item $index:\n$screen") }
+
+            val objectTypeToken = object : TypeToken<T>() {}.type
+
+            //screens.forEachIndexed { index, screen -> Log.i("dataaa", "> Item $index:\n$screen") }
+            return Gson().fromJson(jsonFileString, objectTypeToken)
         }
     }
 }

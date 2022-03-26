@@ -20,7 +20,7 @@ class JsonController {
             return jsonString
         }
 
-        fun <T> parseJsonToObjectByType(jsonFileString: String): T {
+        inline fun <reified T> parseJsonToObjectByType(jsonFileString: String): T {
             Log.i("dataaa", jsonFileString)
 
             val objectTypeToken = object : TypeToken<T>() {}.type

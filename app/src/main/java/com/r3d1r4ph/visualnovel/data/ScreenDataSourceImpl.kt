@@ -1,6 +1,10 @@
-package com.r3d1r4ph.visualnovel
+package com.r3d1r4ph.visualnovel.data
 
 import android.content.Context
+import com.r3d1r4ph.visualnovel.domain.Screen
+import com.r3d1r4ph.visualnovel.utils.JsonController
+import com.r3d1r4ph.visualnovel.utils.LoadScreensException
+import com.r3d1r4ph.visualnovel.utils.ResultWrapper
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

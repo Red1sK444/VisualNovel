@@ -1,4 +1,4 @@
-package com.r3d1r4ph.visualnovel
+package com.r3d1r4ph.visualnovel.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

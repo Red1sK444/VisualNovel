@@ -1,13 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.DefaultFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="DEFAULT" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/defaultMessageTextView"
+        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/defaultHorizontalGuideline"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/defaultThirdButton"
+        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Action"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/defaultFirstButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/defaultMessageTextView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/defaultFirstButton"
+        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Action"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/defaultSecondButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/defaultThirdButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/defaultSecondButton"
+        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Action"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/defaultFirstButton" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/defaultHorizontalGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.577" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/actionGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:constraint_referenced_ids="defaultFirstButton,defaultSecondButton,defaultThirdButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,6 @@ import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.databinding.FragmentInputBinding
 import com.r3d1r4ph.visualnovel.domain.Screen
 import com.r3d1r4ph.visualnovel.ui.fragments.BaseFragment
-import com.r3d1r4ph.visualnovel.utils.ResultWrapper
 
 class InputFragment : BaseFragment(R.layout.fragment_input) {
 
@@ -28,16 +27,14 @@ class InputFragment : BaseFragment(R.layout.fragment_input) {
         inputConfirmButton.text = getStringByResourceName(screen.actions[1].message)
 
         viewModel.validation.observe(viewLifecycleOwner) { result ->
-            when (result) {
-                is ResultWrapper.Success ->
-                    navigateByScreenId(
-                        screenId = screen.actions[1].toScreen,
-                        name = result.value
-                    )
-                is ResultWrapper.Failure -> with(inputTextInputLayout) {
-                    error = resources.getString(R.string.empty_name)
-                    isErrorEnabled = true
-                }
+            if (result.isSuccess) {
+                navigateByScreenId(
+                    screenId = screen.actions[1].toScreen,
+                    name = result.getOrNull()
+                )
+            } else {
+                inputTextInputLayout.error = resources.getString(R.string.empty_name)
+                inputTextInputLayout.isErrorEnabled = true
             }
         }
 

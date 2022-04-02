@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.r3d1r4ph.visualnovel.data.ScreenDataSource
 import com.r3d1r4ph.visualnovel.domain.Screen
 import com.r3d1r4ph.visualnovel.domain.ScreenTypes
-import com.r3d1r4ph.visualnovel.utils.ResultWrapper
+import com.r3d1r4ph.visualnovel.utils.exceptions.UnknownException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -24,22 +24,23 @@ open class ScreenViewModel @Inject constructor(
         get() = _exception
 
     fun getScreenType(screenId: Int): ScreenTypes? {
-        return when (val result = screenDataSource.getScreenById(screenId)) {
-            is ResultWrapper.Success -> result.value.screenType
-            is ResultWrapper.Failure -> {
-                _exception.value = result.exception
-                null
-            }
+        val result = screenDataSource.getScreenById(screenId)
+        return if (result.isSuccess) {
+            result.getOrNull()?.screenType
+        } else {
+            _exception.value = (result.exceptionOrNull() ?: UnknownException()) as Exception
+            null
         }
     }
 
     fun getScreenById(screenId: Int) {
-        when (val result = screenDataSource.getScreenById(screenId)) {
-            is ResultWrapper.Success -> {
-                val wtf: Screen = result.value
-                _screen.value = wtf
+        val result = screenDataSource.getScreenById(screenId)
+        if (result.isSuccess) {
+            result.getOrNull()?.let {
+                _screen.value = it
             }
-            is ResultWrapper.Failure -> _exception.value = result.exception
+        } else {
+            _exception.value = (result.exceptionOrNull() ?: UnknownException()) as Exception
         }
     }
 }

@@ -13,14 +13,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity: AppCompatActivity() {
 
-    @Inject
-    lateinit var screenDataSource: ScreenDataSource
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         window.navigationBarColor = ContextCompat.getColor(this, R.color.black)
-
-
     }
 }

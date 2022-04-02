@@ -8,7 +8,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/previewTitleTextView"
-        style="@style/Base.Widget.MaterialComponents.TextView.Preview"
+        style="@style/Preview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/previewButton"
@@ -18,7 +18,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/previewButton"
-        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Message"
+        style="@style/TextField.Message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

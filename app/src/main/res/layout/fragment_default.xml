@@ -8,7 +8,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/defaultMessageTextView"
-        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Message"
+        style="@style/TextField.Message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/defaultThirdButton"
-        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Action"
+        style="@style/TextField.Action"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/defaultFirstButton"
@@ -28,7 +28,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/defaultFirstButton"
-        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Action"
+        style="@style/TextField.Action"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/defaultSecondButton"
@@ -38,7 +38,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/defaultSecondButton"
-        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Action"
+        style="@style/TextField.Action"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -8,7 +8,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/inputMessageTextView"
-        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Message"
+        style="@style/TextField.Message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputTextInputLayout"
-        style="@style/Widget.Design.TextInputEditText.MyTextInput"
+        style="@style/MyTextInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/inputConfirmButton"
@@ -36,7 +36,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/inputConfirmButton"
-        style="@style/Base.TextAppearance.MaterialComponents.Button.TextField.Message"
+        style="@style/TextField.Message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"

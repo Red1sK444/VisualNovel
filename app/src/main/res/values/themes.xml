@@ -15,8 +15,8 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <!-- Text View & Button -->
-    <style name="Base.Widget.MaterialComponents.TextView.Preview">
+    <!-- Text View & Button Base.Widget.MaterialComponents.TextView-->
+    <style name="Preview" parent="Widget.MaterialComponents.TextView">
         <item name="fontFamily">@font/quattrocento_sans_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">36sp</item>
@@ -31,7 +31,7 @@
         <item name="android:background">@color/sky</item>
     </style>
 
-    <style name="Base.TextAppearance.MaterialComponents.Button.TextField">
+    <style name="TextField" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">17sp</item>
         <item name="fontWeight">500</item>
@@ -47,24 +47,24 @@
         <item name="cornerRadius">0dp</item>
     </style>
 
-    <style name="Base.TextAppearance.MaterialComponents.Button.TextField.Message">
+    <style name="TextField.Message">
         <item name="android:background">@color/blue</item>
         <item name="android:backgroundTint">@color/blue</item>
     </style>
 
-    <style name="Base.TextAppearance.MaterialComponents.Button.TextField.Action">
+    <style name="TextField.Action">
         <item name="android:backgroundTint">@color/sky</item>
     </style>
     <!-- -->
 
     <!-- Text Input Layout -->
-    <style name="Widget.Design.TextInputEditText.MyTextInput">
+    <style name="MyTextInput" parent="Widget.Design.TextInputEditText">
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="hintEnabled">false</item>
     </style>
 
-    <style name="MyTextInputEditText">
+    <style name="MyTextInputEditText" parent="Widget.Design.TextInputEditText">
         <item name="android:background">@color/heavy_white</item>
         <item name="android:paddingTop">18dp</item>
         <item name="android:paddingBottom">14dp</item>

@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import timber.log.Timber
 import java.io.IOException
 
 class JsonController {
@@ -21,7 +22,7 @@ class JsonController {
         }
 
         inline fun <reified T> parseJsonToObjectByType(jsonFileString: String): T {
-            Log.i("dataaa", jsonFileString)
+            Timber.i(jsonFileString)
 
             val objectTypeToken = object : TypeToken<T>() {}.type
             return Gson().fromJson(jsonFileString, objectTypeToken)

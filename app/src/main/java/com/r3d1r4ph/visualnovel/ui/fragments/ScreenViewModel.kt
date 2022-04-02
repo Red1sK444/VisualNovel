@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
+import com.r3d1r4ph.visualnovel.common.exceptions.UnknownException
 import com.r3d1r4ph.visualnovel.data.ScreenDataSource
 import com.r3d1r4ph.visualnovel.domain.Screen
 import com.r3d1r4ph.visualnovel.domain.ScreenTypes
-import com.r3d1r4ph.visualnovel.common.exceptions.UnknownException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

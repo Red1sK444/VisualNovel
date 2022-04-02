@@ -1,4 +1,4 @@
-package com.r3d1r4ph.visualnovel.utils
+package com.r3d1r4ph.visualnovel.common
 
 import android.content.Context
 import android.util.Log

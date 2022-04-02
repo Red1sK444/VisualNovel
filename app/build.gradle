@@ -64,6 +64,9 @@ dependencies {
 
     // Dynamic Feature Module Support
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.0-alpha03"
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.0-alpha05"
 }
 
 kapt {

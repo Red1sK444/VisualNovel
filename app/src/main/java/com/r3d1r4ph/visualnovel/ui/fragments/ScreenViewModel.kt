@@ -3,10 +3,11 @@ package com.r3d1r4ph.visualnovel.ui.fragments
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import com.r3d1r4ph.visualnovel.data.ScreenDataSource
 import com.r3d1r4ph.visualnovel.domain.Screen
 import com.r3d1r4ph.visualnovel.domain.ScreenTypes
-import com.r3d1r4ph.visualnovel.utils.exceptions.UnknownException
+import com.r3d1r4ph.visualnovel.common.exceptions.UnknownException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -17,11 +18,11 @@ open class ScreenViewModel @Inject constructor(
 
     private val _screen = MutableLiveData<Screen>()
     val screen: LiveData<Screen>
-        get() = _screen
+        get() = _screen.map { it }
 
     private val _exception = MutableLiveData<Exception>()
     val exception: LiveData<Exception>
-        get() = _exception
+        get() = _exception.map { it }
 
     fun getScreenType(screenId: Int): ScreenTypes? {
         val result = screenDataSource.getScreenById(screenId)

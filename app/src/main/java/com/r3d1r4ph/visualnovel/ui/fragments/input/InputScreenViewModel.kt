@@ -2,6 +2,7 @@ package com.r3d1r4ph.visualnovel.ui.fragments.input
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import com.r3d1r4ph.visualnovel.data.ScreenDataSource
 import com.r3d1r4ph.visualnovel.ui.fragments.ScreenViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +15,7 @@ class InputScreenViewModel @Inject constructor(
 
     private val _validation = MutableLiveData<Result<String>>()
     val validation: LiveData<Result<String>>
-        get() = _validation
+        get() = _validation.map { it }
 
     fun validateName(name: String) {
         _validation.value = if (name.isNotEmpty()) {

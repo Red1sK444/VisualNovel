@@ -21,6 +21,7 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
     companion object {
         const val SCREEN_ID = "Screen Id"
         const val NAME_ID = "Name Id"
+        private const val DRAWABLE = "drawable"
     }
 
     protected open val viewModel by viewModels<ScreenViewModel>()
@@ -52,7 +53,7 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
 
     protected open fun initViewByScreen(screen: Screen) = with(viewBinding) {
         val resId =
-            resources.getIdentifier(screen.background, "drawable", requireActivity().packageName)
+            resources.getIdentifier(screen.background, DRAWABLE, requireActivity().packageName)
         root.setBackgroundResource(resId)
     }
 

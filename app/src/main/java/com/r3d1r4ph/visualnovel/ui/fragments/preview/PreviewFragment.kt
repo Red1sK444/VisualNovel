@@ -40,14 +40,5 @@ class PreviewFragment : BaseFragment(R.layout.fragment_preview) {
         }
     }
 
-//    override fun setActionByScreenType(screenId: Int, name: String?, screenType: ScreenTypeEnum) {
-//        when (screenType) {
-//            ScreenTypeEnum.PREVIEW -> PreviewFragmentDirections.actionPreviewFragmentSelf(screenId)
-//            ScreenTypeEnum.INPUT -> PreviewFragmentDirections.actionPreviewFragmentToInputFragment(
-//                screenId
-//            )
-//        }
-//    }
-
     override fun getScreenId() = args.screenId
 }

@@ -4,14 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.r3d1r4ph.visualnovel.data.ScreenDataSource
+import com.r3d1r4ph.visualnovel.data.ScreenRepository
 import com.r3d1r4ph.visualnovel.ui.fragments.ScreenViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class InputScreenViewModel @Inject constructor(
-    screenDataSource: ScreenDataSource
-) : ScreenViewModel(screenDataSource) {
+    screenRepository: ScreenRepository
+) : ScreenViewModel(screenRepository) {
 
     private val _validation = MutableLiveData<Result<String>>()
     val validation: LiveData<Result<String>>

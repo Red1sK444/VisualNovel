@@ -53,7 +53,11 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
             Toast.makeText(requireContext(), R.string.load_screen_exception, Toast.LENGTH_SHORT)
                 .show()
         }
-        //navDirection.observe(viewLifecycleOwner, ::navigateByDirection)
+        openNextScreen.observe(viewLifecycleOwner) {
+            navigateByDirection(
+                getDirectionByScreenType(it.screenId, it.name, it.screenType)
+            )
+        }
     }
 
     protected open fun initViewByScreen(screen: Screen) = with(viewBinding) {
@@ -71,18 +75,8 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
         }
     }
 
-    protected fun navigateByScreenId(screenId: Int, name: String? = null) {
-        //viewModel.determineScreenType(screenId)
-        val type = viewModel.getScreenType(screenId)
-        navigateByDirection(type?.let { getDirectionByScreenType(screenId, name, it) })
-//        viewModel.screenType.observe(viewLifecycleOwner) {
-//
-//        }
-//        getActionByScreenId(screenId, name)?.let { action ->
-//            findNavController().apply {
-//                navigate(action)
-//            }
-//        }
+    protected fun navigateByScreenId(screenId: Int, name: String? = null) = with(viewModel) {
+        openNextScreen(screenId, name)
     }
 
     private fun navigateByDirection(navDirections: NavDirections?) {
@@ -92,12 +86,6 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
             }
         }
     }
-
-//    protected abstract fun setActionByScreenType(
-//        screenId: Int,
-//        name: String? = null,
-//        screenType: ScreenTypeEnum
-//    )
 
     protected abstract fun getDirectionByScreenType(
         screenId: Int,

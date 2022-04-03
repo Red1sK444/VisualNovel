@@ -10,6 +10,7 @@ import com.r3d1r4ph.visualnovel.databinding.FragmentInputBinding
 import com.r3d1r4ph.visualnovel.domain.Screen
 import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
 import com.r3d1r4ph.visualnovel.ui.fragments.BaseFragment
+import com.r3d1r4ph.visualnovel.ui.fragments.preview.PreviewFragmentDirections
 
 class InputFragment : BaseFragment(R.layout.fragment_input) {
 
@@ -47,10 +48,12 @@ class InputFragment : BaseFragment(R.layout.fragment_input) {
         }
     }
 
-    override fun getActionByScreenId(screenId: Int, name: String?): NavDirections? {
-        val type = viewModel.getScreenType(screenId) ?: return null
-
-        return when (type) {
+    override fun getDirectionByScreenType(
+        screenId: Int,
+        name: String?,
+        screenType: ScreenTypeEnum
+    ): NavDirections? {
+        return when (screenType) {
             ScreenTypeEnum.PREVIEW -> null
             ScreenTypeEnum.INPUT -> null
             ScreenTypeEnum.DEFAULT -> InputFragmentDirections.actionInputFragmentToDefaultFragment(

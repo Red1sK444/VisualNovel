@@ -26,10 +26,12 @@ class PreviewFragment : BaseFragment(R.layout.fragment_preview) {
         }
     }
 
-    override fun getActionByScreenId(screenId: Int, name: String?): NavDirections? {
-        val type = viewModel.getScreenType(screenId) ?: return null
-
-        return when (type) {
+    override fun getDirectionByScreenType(
+        screenId: Int,
+        name: String?,
+        screenType: ScreenTypeEnum
+    ): NavDirections? {
+        return when (screenType) {
             ScreenTypeEnum.PREVIEW -> PreviewFragmentDirections.actionPreviewFragmentSelf(screenId)
             ScreenTypeEnum.INPUT -> PreviewFragmentDirections.actionPreviewFragmentToInputFragment(
                 screenId
@@ -37,6 +39,15 @@ class PreviewFragment : BaseFragment(R.layout.fragment_preview) {
             ScreenTypeEnum.DEFAULT -> null
         }
     }
+
+//    override fun setActionByScreenType(screenId: Int, name: String?, screenType: ScreenTypeEnum) {
+//        when (screenType) {
+//            ScreenTypeEnum.PREVIEW -> PreviewFragmentDirections.actionPreviewFragmentSelf(screenId)
+//            ScreenTypeEnum.INPUT -> PreviewFragmentDirections.actionPreviewFragmentToInputFragment(
+//                screenId
+//            )
+//        }
+//    }
 
     override fun getScreenId() = args.screenId
 }

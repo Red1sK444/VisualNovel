@@ -13,6 +13,7 @@ import androidx.transition.TransitionInflater
 import androidx.viewbinding.ViewBinding
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.domain.Screen
+import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,12 +47,13 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
 
     protected abstract fun getScreenId(): Int
 
-    private fun initObservers() {
-        viewModel.screen.observe(viewLifecycleOwner, ::initViewByScreen)
-        viewModel.exception.observe(viewLifecycleOwner) {
+    private fun initObservers() = with(viewModel) {
+        screen.observe(viewLifecycleOwner, ::initViewByScreen)
+        exception.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), R.string.load_screen_exception, Toast.LENGTH_SHORT)
                 .show()
         }
+        //navDirection.observe(viewLifecycleOwner, ::navigateByDirection)
     }
 
     protected open fun initViewByScreen(screen: Screen) = with(viewBinding) {
@@ -70,12 +72,36 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
     }
 
     protected fun navigateByScreenId(screenId: Int, name: String? = null) {
-        getActionByScreenId(screenId, name)?.let { action ->
+        //viewModel.determineScreenType(screenId)
+        val type = viewModel.getScreenType(screenId)
+        navigateByDirection(type?.let { getDirectionByScreenType(screenId, name, it) })
+//        viewModel.screenType.observe(viewLifecycleOwner) {
+//
+//        }
+//        getActionByScreenId(screenId, name)?.let { action ->
+//            findNavController().apply {
+//                navigate(action)
+//            }
+//        }
+    }
+
+    private fun navigateByDirection(navDirections: NavDirections?) {
+        navDirections?.let { action ->
             findNavController().apply {
                 navigate(action)
             }
         }
     }
 
-    protected abstract fun getActionByScreenId(screenId: Int, name: String? = null): NavDirections?
+//    protected abstract fun setActionByScreenType(
+//        screenId: Int,
+//        name: String? = null,
+//        screenType: ScreenTypeEnum
+//    )
+
+    protected abstract fun getDirectionByScreenType(
+        screenId: Int,
+        name: String? = null,
+        screenType: ScreenTypeEnum
+    ): NavDirections?
 }

@@ -7,7 +7,7 @@ import androidx.lifecycle.map
 import com.r3d1r4ph.visualnovel.common.exceptions.UnknownException
 import com.r3d1r4ph.visualnovel.data.ScreenDataSource
 import com.r3d1r4ph.visualnovel.domain.Screen
-import com.r3d1r4ph.visualnovel.domain.ScreenTypes
+import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -24,7 +24,7 @@ open class ScreenViewModel @Inject constructor(
     val exception: LiveData<Exception>
         get() = _exception.map { it }
 
-    fun getScreenType(screenId: Int): ScreenTypes? {
+    fun getScreenType(screenId: Int): ScreenTypeEnum? {
         val result = screenDataSource.getScreenById(screenId)
         return if (result.isSuccess) {
             result.getOrNull()?.screenType

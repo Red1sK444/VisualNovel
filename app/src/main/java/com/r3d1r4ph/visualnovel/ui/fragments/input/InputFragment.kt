@@ -2,16 +2,20 @@ package com.r3d1r4ph.visualnovel.ui.fragments.input
 
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.databinding.FragmentInputBinding
 import com.r3d1r4ph.visualnovel.domain.Screen
+import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
 import com.r3d1r4ph.visualnovel.ui.fragments.BaseFragment
 
 class InputFragment : BaseFragment(R.layout.fragment_input) {
 
     override val viewBinding by viewBinding(FragmentInputBinding::bind)
     override val viewModel by viewModels<InputScreenViewModel>()
+    override val args: InputFragmentArgs by navArgs()
 
     override fun initViewByScreen(screen: Screen) = with(viewBinding) {
         super.initViewByScreen(screen)
@@ -42,4 +46,19 @@ class InputFragment : BaseFragment(R.layout.fragment_input) {
             viewModel.validateName(inputTextInputEditText.text.toString())
         }
     }
+
+    override fun getActionByScreenId(screenId: Int, name: String?): NavDirections? {
+        val type = viewModel.getScreenType(screenId) ?: return null
+
+        return when (type) {
+            ScreenTypeEnum.PREVIEW -> null
+            ScreenTypeEnum.INPUT -> null
+            ScreenTypeEnum.DEFAULT -> InputFragmentDirections.actionInputFragmentToDefaultFragment(
+                screenId,
+                name
+            )
+        }
+    }
+
+    override fun getScreenId() = args.screenId
 }

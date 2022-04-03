@@ -9,15 +9,82 @@
         android:id="@+id/previewFragment"
         android:name="com.r3d1r4ph.visualnovel.ui.fragments.preview.PreviewFragment"
         android:label="fragment_preview"
-        tools:layout="@layout/fragment_preview" />
+        tools:layout="@layout/fragment_preview">
+        <action
+            android:id="@+id/action_previewFragment_to_inputFragment"
+            app:destination="@id/inputFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="screenId"
+                app:argType="integer" />
+        </action>
+        <action
+            android:id="@+id/action_previewFragment_self"
+            app:destination="@id/previewFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="screenId"
+                app:argType="integer" />
+        </action>
+        <argument
+            android:name="screenId"
+            android:defaultValue="1"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/inputFragment"
         android:name="com.r3d1r4ph.visualnovel.ui.fragments.input.InputFragment"
         android:label="fragment_input"
-        tools:layout="@layout/fragment_input" />
+        tools:layout="@layout/fragment_input">
+        <action
+            android:id="@+id/action_inputFragment_to_defaultFragment"
+            app:destination="@id/defaultFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="screenId"
+                app:argType="integer" />
+            <argument
+                android:name="name"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+        <argument
+            android:name="screenId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/defaultFragment"
         android:name="com.r3d1r4ph.visualnovel.ui.fragments.defaults.DefaultFragment"
         android:label="fragment_default"
-        tools:layout="@layout/fragment_default" />
+        tools:layout="@layout/fragment_default">
+        <action
+            android:id="@+id/action_defaultFragment_self"
+            app:destination="@id/defaultFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="screenId"
+                app:argType="integer" />
+        </action>
+        <action
+            android:id="@+id/action_defaultFragment_to_previewFragment"
+            app:destination="@id/previewFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="screenId"
+                app:argType="integer" />
+        </action>
+        <argument
+            android:name="name"
+            android:defaultValue="null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="screenId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

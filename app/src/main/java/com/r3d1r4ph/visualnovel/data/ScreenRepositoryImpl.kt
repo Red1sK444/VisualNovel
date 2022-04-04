@@ -2,6 +2,7 @@ package com.r3d1r4ph.visualnovel.data
 
 import com.r3d1r4ph.visualnovel.common.exceptions.UnknownException
 import com.r3d1r4ph.visualnovel.domain.Screen
+import com.r3d1r4ph.visualnovel.domain.ScreenRepository
 import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
 import javax.inject.Inject
 
@@ -25,4 +26,10 @@ class ScreenRepositoryImpl @Inject constructor(
             Result.failure(result.exceptionOrNull() ?: UnknownException())
         }
     }
+
+    override fun isScreensLoaded() =
+        screenDataSource.isScreensLoaded()
+
+    override fun loadScreens(jsonString: String) =
+        screenDataSource.loadScreens(jsonString)
 }

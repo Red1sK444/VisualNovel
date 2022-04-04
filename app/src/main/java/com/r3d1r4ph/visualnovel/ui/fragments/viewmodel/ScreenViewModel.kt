@@ -1,16 +1,17 @@
-package com.r3d1r4ph.visualnovel.ui.fragments
+package com.r3d1r4ph.visualnovel.ui.fragments.viewmodel
 
 import androidx.lifecycle.*
 import com.r3d1r4ph.visualnovel.common.exceptions.UnknownException
-import com.r3d1r4ph.visualnovel.data.ScreenRepository
+import com.r3d1r4ph.visualnovel.domain.ScreenRepository
 import com.r3d1r4ph.visualnovel.domain.Screen
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.r3d1r4ph.visualnovel.ui.fragments.OpenScreenArgs
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-@HiltViewModel
-open class ScreenViewModel @Inject constructor(
-    private val screenRepository: ScreenRepository
+open class ScreenViewModel @AssistedInject constructor(
+    private val screenRepository: ScreenRepository,
+    @Assisted screensJsonString: String
 ) : ViewModel() {
 
     private val _screen = MutableLiveData<Screen>()
@@ -24,6 +25,14 @@ open class ScreenViewModel @Inject constructor(
     private val _exception = MutableLiveData<Exception>()
     val exception: LiveData<Exception>
         get() = _exception.map { it }
+
+    init {
+        viewModelScope.launch {
+            if (!screenRepository.isScreensLoaded()) {
+                screenRepository.loadScreens(screensJsonString)
+            }
+        }
+    }
 
     fun openNextScreen(screenId: Int, name: String? = null) {
         viewModelScope.launch {

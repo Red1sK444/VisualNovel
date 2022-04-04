@@ -3,16 +3,15 @@ package com.r3d1r4ph.visualnovel.ui.fragments.input
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
-import com.r3d1r4ph.visualnovel.data.ScreenDataSource
-import com.r3d1r4ph.visualnovel.data.ScreenRepository
-import com.r3d1r4ph.visualnovel.ui.fragments.ScreenViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
+import com.r3d1r4ph.visualnovel.domain.ScreenRepository
+import com.r3d1r4ph.visualnovel.ui.fragments.viewmodel.ScreenViewModel
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 
-@HiltViewModel
-class InputScreenViewModel @Inject constructor(
-    screenRepository: ScreenRepository
-) : ScreenViewModel(screenRepository) {
+class InputScreenViewModel @AssistedInject constructor(
+    screenRepository: ScreenRepository,
+    @Assisted screensJsonString: String
+) : ScreenViewModel(screenRepository, screensJsonString) {
 
     private val _validation = MutableLiveData<Result<String>>()
     val validation: LiveData<Result<String>>

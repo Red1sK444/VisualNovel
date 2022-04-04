@@ -5,17 +5,35 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.r3d1r4ph.visualnovel.BuildConfig
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.databinding.FragmentInputBinding
+import com.r3d1r4ph.visualnovel.di.viewmodelfactories.InputScreenViewModelAssistedFactory
 import com.r3d1r4ph.visualnovel.domain.Screen
 import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
+import com.r3d1r4ph.visualnovel.ui.utils.Utils
 import com.r3d1r4ph.visualnovel.ui.fragments.BaseFragment
-import com.r3d1r4ph.visualnovel.ui.fragments.preview.PreviewFragmentDirections
+import com.r3d1r4ph.visualnovel.ui.fragments.viewmodel.ScreenViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class InputFragment : BaseFragment(R.layout.fragment_input) {
 
     override val viewBinding by viewBinding(FragmentInputBinding::bind)
-    override val viewModel by viewModels<InputScreenViewModel>()
+
+    @Inject
+    lateinit var inputScreenViewModelAssistedFactory: InputScreenViewModelAssistedFactory
+
+    override val viewModel by viewModels<InputScreenViewModel> {
+        ScreenViewModelFactory(
+            assistedFactory = inputScreenViewModelAssistedFactory,
+            screensJsonString = Utils.getJsonDataFromAsset(
+                requireContext(),
+                BuildConfig.SCRIPT_FILE_NAME
+            )
+        )
+    }
     override val args: InputFragmentArgs by navArgs()
 
     override fun initViewByScreen(screen: Screen) = with(viewBinding) {

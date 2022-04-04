@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 
 open class ScreenViewModel @AssistedInject constructor(
     private val screenRepository: ScreenRepository,
-    @Assisted screensJsonString: String
+    @Assisted screensJsonString: String,
+    @Assisted screenId: Int
 ) : ViewModel() {
 
     private val _screen = MutableLiveData<Screen>()
@@ -31,6 +32,7 @@ open class ScreenViewModel @AssistedInject constructor(
             if (!screenRepository.isScreensLoaded()) {
                 screenRepository.loadScreens(screensJsonString)
             }
+            getScreenById(screenId)
         }
     }
 

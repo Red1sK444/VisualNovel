@@ -38,7 +38,8 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
             screensJsonString = Utils.getJsonDataFromAsset(
                 requireContext(),
                 BuildConfig.SCRIPT_FILE_NAME
-            )
+            ),
+            screenId = getScreenId()
         )
     }
     protected abstract val viewBinding: ViewBinding
@@ -54,12 +55,7 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
         initObservers()
-    }
-
-    private fun initView() {
-        viewModel.getScreenById(getScreenId())
     }
 
     protected abstract fun getScreenId(): Int

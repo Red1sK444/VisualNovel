@@ -6,6 +6,7 @@ import dagger.assisted.AssistedFactory
 @AssistedFactory
 interface InputScreenViewModelAssistedFactory : ScreenViewModelAssistedFactory {
     override fun create(
-        screensJsonString: String
+        screensJsonString: String,
+        screenId: Int
     ): InputScreenViewModel
 }

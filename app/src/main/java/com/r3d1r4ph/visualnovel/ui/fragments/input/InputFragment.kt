@@ -31,7 +31,8 @@ class InputFragment : BaseFragment(R.layout.fragment_input) {
             screensJsonString = Utils.getJsonDataFromAsset(
                 requireContext(),
                 BuildConfig.SCRIPT_FILE_NAME
-            )
+            ),
+            screenId = getScreenId()
         )
     }
     override val args: InputFragmentArgs by navArgs()

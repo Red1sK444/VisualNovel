@@ -10,8 +10,9 @@ import dagger.assisted.AssistedInject
 
 class InputScreenViewModel @AssistedInject constructor(
     screenRepository: ScreenRepository,
-    @Assisted screensJsonString: String
-) : ScreenViewModel(screenRepository, screensJsonString) {
+    @Assisted screensJsonString: String,
+    @Assisted screenId: Int
+) : ScreenViewModel(screenRepository, screensJsonString, screenId) {
 
     private val _validation = MutableLiveData<Result<String>>()
     val validation: LiveData<Result<String>>

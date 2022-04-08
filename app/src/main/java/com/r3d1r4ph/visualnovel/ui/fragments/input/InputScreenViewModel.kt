@@ -6,9 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.map
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenByIdUseCase
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenTypeByIdUseCase
-import com.r3d1r4ph.visualnovel.ui.fragments.viewmodel.ScreenViewModel
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedInject
+import com.r3d1r4ph.visualnovel.ui.fragments.ScreenViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

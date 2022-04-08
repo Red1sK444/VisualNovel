@@ -14,7 +14,6 @@ import androidx.viewbinding.ViewBinding
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.domain.models.Screen
 import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
-import com.r3d1r4ph.visualnovel.ui.fragments.viewmodel.ScreenViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

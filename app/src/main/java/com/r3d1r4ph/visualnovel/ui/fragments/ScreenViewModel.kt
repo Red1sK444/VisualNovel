@@ -1,4 +1,4 @@
-package com.r3d1r4ph.visualnovel.ui.fragments.viewmodel
+package com.r3d1r4ph.visualnovel.ui.fragments
 
 import androidx.lifecycle.*
 import com.r3d1r4ph.visualnovel.R
@@ -6,7 +6,6 @@ import com.r3d1r4ph.visualnovel.common.exceptions.LoadScreensException
 import com.r3d1r4ph.visualnovel.domain.models.Screen
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenByIdUseCase
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenTypeByIdUseCase
-import com.r3d1r4ph.visualnovel.ui.fragments.OpenScreenArgs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber

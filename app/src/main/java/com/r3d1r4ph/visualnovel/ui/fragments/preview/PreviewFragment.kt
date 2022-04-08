@@ -5,8 +5,8 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.databinding.FragmentPreviewBinding
-import com.r3d1r4ph.visualnovel.domain.Screen
-import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
+import com.r3d1r4ph.visualnovel.domain.models.Screen
+import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 import com.r3d1r4ph.visualnovel.ui.fragments.BaseFragment
 
 

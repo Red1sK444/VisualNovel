@@ -6,10 +6,9 @@ import com.r3d1r4ph.visualnovel.di.viewmodelfactories.ScreenViewModelAssistedFac
 
 class ScreenViewModelFactory(
     private val assistedFactory: ScreenViewModelAssistedFactory,
-    private val screensJsonString: String,
     private val screenId: Int
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return assistedFactory.create(screensJsonString, screenId) as T
+        return assistedFactory.create(screenId) as T
     }
 }

@@ -1,17 +1,20 @@
 package com.r3d1r4ph.visualnovel.ui.fragments.viewmodel
 
 import androidx.lifecycle.*
-import com.r3d1r4ph.visualnovel.common.exceptions.UnknownException
-import com.r3d1r4ph.visualnovel.domain.ScreenRepository
-import com.r3d1r4ph.visualnovel.domain.Screen
+import com.r3d1r4ph.visualnovel.R
+import com.r3d1r4ph.visualnovel.common.exceptions.LoadScreensException
+import com.r3d1r4ph.visualnovel.domain.models.Screen
+import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenByIdUseCase
+import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenTypeByIdUseCase
 import com.r3d1r4ph.visualnovel.ui.fragments.OpenScreenArgs
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 open class ScreenViewModel @AssistedInject constructor(
-    private val screenRepository: ScreenRepository,
-    @Assisted screensJsonString: String,
+    private val getScreenTypeByIdUseCase: GetScreenTypeByIdUseCase,
+    private val getScreenByIdUseCase: GetScreenByIdUseCase,
     @Assisted screenId: Int
 ) : ViewModel() {
 
@@ -23,56 +26,50 @@ open class ScreenViewModel @AssistedInject constructor(
     val openNextScreen: LiveData<OpenScreenArgs>
         get() = _openNextScreen.map { it }
 
-    private val _exception = MutableLiveData<Exception>()
-    val exception: LiveData<Exception>
-        get() = _exception.map { it }
+    private val _exceptionId = MutableLiveData<Int>()
+    val exceptionId: LiveData<Int>
+        get() = _exceptionId.map { it }
 
     init {
-        viewModelScope.launch {
-            if (!screenRepository.isScreensLoaded()) {
-                screenRepository.loadScreens(screensJsonString)
-            }
-            getScreenById(screenId)
-        }
+        Timber.i("ViewModel screen ${Thread.currentThread().name}")
+        getScreenById(screenId)
     }
 
     fun openNextScreen(screenId: Int, name: String? = null) {
         viewModelScope.launch {
-            val result = screenRepository.getScreenTypeById(screenId)
+            val result = getScreenTypeByIdUseCase.invoke(screenId)
             if (result.isSuccess) {
-                try {
-                    _openNextScreen.postValue(
-                        OpenScreenArgs(
-                            screenId = screenId,
-                            name = name,
-                            screenType = result.getOrThrow()
-                        )
+                _openNextScreen.postValue(
+                    OpenScreenArgs(
+                        screenId = screenId,
+                        name = name,
+                        screenType = result.getOrThrow()
                     )
-                } catch (t: Throwable) {
-                    _exception.postValue(
-                        UnknownException()
-                    )
-                }
-            } else {
-                _exception.postValue(
-                    (result.exceptionOrNull() ?: UnknownException()) as Exception
                 )
+            } else {
+                handleException(result.exceptionOrNull())
             }
         }
     }
 
-    fun getScreenById(screenId: Int) {
+    private fun getScreenById(screenId: Int) {
         viewModelScope.launch {
-            val result = screenRepository.getScreenById(screenId)
+            Timber.i("scope ${Thread.currentThread().name}")
+            val result = getScreenByIdUseCase.invoke(screenId)
             if (result.isSuccess) {
                 result.getOrNull()?.let {
                     _screen.value = it
                 }
             } else {
-                _exception.postValue(
-                    (result.exceptionOrNull() ?: UnknownException()) as Exception
-                )
+                handleException(result.exceptionOrNull())
             }
+        }
+    }
+
+    private fun handleException(exception: Throwable?) {
+        when (exception) {
+            is LoadScreensException -> _exceptionId.postValue(R.string.load_screen_exception)
+            else -> _exceptionId.postValue(R.string.unknown_exception)
         }
     }
 }

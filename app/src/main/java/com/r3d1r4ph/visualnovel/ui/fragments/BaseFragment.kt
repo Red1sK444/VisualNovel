@@ -11,12 +11,10 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
 import androidx.viewbinding.ViewBinding
-import com.r3d1r4ph.visualnovel.BuildConfig
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.di.viewmodelfactories.ScreenViewModelAssistedFactory
-import com.r3d1r4ph.visualnovel.domain.Screen
-import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
-import com.r3d1r4ph.visualnovel.ui.utils.Utils
+import com.r3d1r4ph.visualnovel.domain.models.Screen
+import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 import com.r3d1r4ph.visualnovel.ui.fragments.viewmodel.ScreenViewModel
 import com.r3d1r4ph.visualnovel.ui.fragments.viewmodel.ScreenViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,10 +33,6 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
     protected open val viewModel by viewModels<ScreenViewModel> {
         ScreenViewModelFactory(
             assistedFactory = screenViewModelAssistedFactory,
-            screensJsonString = Utils.getJsonDataFromAsset(
-                requireContext(),
-                BuildConfig.SCRIPT_FILE_NAME
-            ),
             screenId = getScreenId()
         )
     }
@@ -62,8 +56,8 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
 
     private fun initObservers() = with(viewModel) {
         screen.observe(viewLifecycleOwner, ::initViewByScreen)
-        exception.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), R.string.load_screen_exception, Toast.LENGTH_SHORT)
+        exceptionId.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT)
                 .show()
         }
         openNextScreen.observe(viewLifecycleOwner) {

@@ -1,6 +1,6 @@
 package com.r3d1r4ph.visualnovel.ui.fragments
 
-import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
+import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 
 data class OpenScreenArgs(
     val screenId: Int,

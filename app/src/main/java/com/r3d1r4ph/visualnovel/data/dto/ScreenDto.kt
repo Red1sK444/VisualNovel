@@ -1,7 +1,7 @@
 package com.r3d1r4ph.visualnovel.data.dto
 
-import com.r3d1r4ph.visualnovel.domain.Screen
-import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
+import com.r3d1r4ph.visualnovel.domain.models.Screen
+import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 import kotlinx.serialization.Serializable
 
 @Serializable

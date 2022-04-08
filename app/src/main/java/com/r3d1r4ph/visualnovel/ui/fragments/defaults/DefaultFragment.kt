@@ -7,10 +7,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.button.MaterialButton
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.databinding.FragmentDefaultBinding
-import com.r3d1r4ph.visualnovel.domain.Screen
-import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
+import com.r3d1r4ph.visualnovel.domain.models.Screen
+import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 import com.r3d1r4ph.visualnovel.ui.fragments.BaseFragment
-import com.r3d1r4ph.visualnovel.ui.fragments.input.InputFragmentDirections
 
 class DefaultFragment : BaseFragment(R.layout.fragment_default) {
 

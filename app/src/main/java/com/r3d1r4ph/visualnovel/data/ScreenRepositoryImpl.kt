@@ -1,34 +1,22 @@
 package com.r3d1r4ph.visualnovel.data
 
-import com.r3d1r4ph.visualnovel.common.exceptions.UnknownException
-import com.r3d1r4ph.visualnovel.domain.Screen
-import com.r3d1r4ph.visualnovel.domain.ScreenRepository
-import com.r3d1r4ph.visualnovel.domain.ScreenTypeEnum
+import com.r3d1r4ph.visualnovel.domain.models.Screen
+import com.r3d1r4ph.visualnovel.domain.models.ScreenRepository
+import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 import javax.inject.Inject
 
 class ScreenRepositoryImpl @Inject constructor(
     private val screenDataSource: ScreenDataSource
 ) : ScreenRepository {
 
-    override fun getScreenById(id: Int): Result<Screen> =
-        screenDataSource.getScreenById(id)
+    override fun getScreenById(id: Int): Screen =
+        screenDataSource.getScreenById(id).toDomain()
 
-    override fun getScreenTypeById(id: Int): Result<ScreenTypeEnum> {
-        val result = screenDataSource.getScreenById(id)
-        return if (result.isSuccess) {
-            try {
-                val screen = result.getOrThrow()
-                Result.success(screen.screenType)
-            } catch (t: Throwable) {
-                Result.failure(UnknownException())
-            }
-        } else {
-            Result.failure(result.exceptionOrNull() ?: UnknownException())
-        }
-    }
+    override fun getScreenTypeById(id: Int): ScreenTypeEnum =
+        screenDataSource.getScreenById(id).screenType
 
     override fun isScreensLoaded() =
-        screenDataSource.isScreensLoaded()
+        screenDataSource.getScreenCount() > 0
 
     override fun loadScreens(jsonString: String) =
         screenDataSource.loadScreens(jsonString)

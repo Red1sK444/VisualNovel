@@ -8,7 +8,6 @@ class Utils {
     companion object {
         inline fun <reified T> parseJsonToClassByType(jsonFileString: String): T {
             Timber.i(jsonFileString)
-
             return Json.decodeFromString(jsonFileString)
         }
     }

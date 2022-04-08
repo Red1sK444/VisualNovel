@@ -1,4 +1,4 @@
-package com.r3d1r4ph.visualnovel.domain
+package com.r3d1r4ph.visualnovel.domain.models
 
 data class Screen(
     val id: Int,

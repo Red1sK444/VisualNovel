@@ -2,18 +2,22 @@ package com.r3d1r4ph.visualnovel.ui.fragments.input
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.map
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenByIdUseCase
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenTypeByIdUseCase
 import com.r3d1r4ph.visualnovel.ui.fragments.viewmodel.ScreenViewModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class InputScreenViewModel @AssistedInject constructor(
+@HiltViewModel
+class InputScreenViewModel @Inject constructor(
     getScreenTypeByIdUseCase: GetScreenTypeByIdUseCase,
     getScreenByIdUseCase: GetScreenByIdUseCase,
-    @Assisted screenId: Int
-) : ScreenViewModel(getScreenTypeByIdUseCase, getScreenByIdUseCase, screenId) {
+    state: SavedStateHandle
+) : ScreenViewModel(getScreenTypeByIdUseCase, getScreenByIdUseCase, state) {
 
     private val _validation = MutableLiveData<Result<String>>()
     val validation: LiveData<Result<String>>

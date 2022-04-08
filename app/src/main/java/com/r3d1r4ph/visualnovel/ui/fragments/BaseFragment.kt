@@ -12,30 +12,20 @@ import androidx.navigation.fragment.findNavController
 import androidx.transition.TransitionInflater
 import androidx.viewbinding.ViewBinding
 import com.r3d1r4ph.visualnovel.R
-import com.r3d1r4ph.visualnovel.di.viewmodelfactories.ScreenViewModelAssistedFactory
 import com.r3d1r4ph.visualnovel.domain.models.Screen
 import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 import com.r3d1r4ph.visualnovel.ui.fragments.viewmodel.ScreenViewModel
-import com.r3d1r4ph.visualnovel.ui.fragments.viewmodel.ScreenViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentIdRes) {
 
     companion object {
         private const val DRAWABLE = "drawable"
+
     }
 
-    @Inject
-    lateinit var screenViewModelAssistedFactory: ScreenViewModelAssistedFactory
-
-    protected open val viewModel by viewModels<ScreenViewModel> {
-        ScreenViewModelFactory(
-            assistedFactory = screenViewModelAssistedFactory,
-            screenId = getScreenId()
-        )
-    }
+    protected open val viewModel by viewModels<ScreenViewModel>()
     protected abstract val viewBinding: ViewBinding
     protected abstract val args: NavArgs
 

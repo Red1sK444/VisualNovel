@@ -7,16 +7,21 @@ import com.r3d1r4ph.visualnovel.domain.models.Screen
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenByIdUseCase
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenTypeByIdUseCase
 import com.r3d1r4ph.visualnovel.ui.fragments.OpenScreenArgs
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-open class ScreenViewModel @AssistedInject constructor(
+@HiltViewModel
+open class ScreenViewModel @Inject constructor(
     private val getScreenTypeByIdUseCase: GetScreenTypeByIdUseCase,
     private val getScreenByIdUseCase: GetScreenByIdUseCase,
-    @Assisted screenId: Int
+    state: SavedStateHandle
 ) : ViewModel() {
+
+    private companion object {
+        const val SCREEN_ID = "screenId"
+    }
 
     private val _screen = MutableLiveData<Screen>()
     val screen: LiveData<Screen>
@@ -32,7 +37,13 @@ open class ScreenViewModel @AssistedInject constructor(
 
     init {
         Timber.i("ViewModel screen ${Thread.currentThread().name}")
-        getScreenById(screenId)
+
+        val screenId = state.get<Int>(SCREEN_ID)
+        if (screenId != null) {
+            getScreenById(screenId)
+        } else {
+            _exceptionId.value = R.string.unknown_exception
+        }
     }
 
     fun openNextScreen(screenId: Int, name: String? = null) {

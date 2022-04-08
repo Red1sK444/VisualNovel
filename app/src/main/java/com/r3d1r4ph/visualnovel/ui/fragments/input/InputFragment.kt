@@ -7,28 +7,16 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.databinding.FragmentInputBinding
-import com.r3d1r4ph.visualnovel.di.viewmodelfactories.InputScreenViewModelAssistedFactory
 import com.r3d1r4ph.visualnovel.domain.models.Screen
 import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 import com.r3d1r4ph.visualnovel.ui.fragments.BaseFragment
-import com.r3d1r4ph.visualnovel.ui.fragments.viewmodel.ScreenViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class InputFragment : BaseFragment(R.layout.fragment_input) {
 
     override val viewBinding by viewBinding(FragmentInputBinding::bind)
-
-    @Inject
-    lateinit var inputScreenViewModelAssistedFactory: InputScreenViewModelAssistedFactory
-
-    override val viewModel by viewModels<InputScreenViewModel> {
-        ScreenViewModelFactory(
-            assistedFactory = inputScreenViewModelAssistedFactory,
-            screenId = getScreenId()
-        )
-    }
+    override val viewModel by viewModels<InputScreenViewModel>()
     override val args: InputFragmentArgs by navArgs()
 
     override fun initViewByScreen(screen: Screen) = with(viewBinding) {

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.r3d1r4ph.visualnovel.BuildConfig
 import com.r3d1r4ph.visualnovel.R
-import com.r3d1r4ph.visualnovel.di.viewmodelfactories.MainViewModelAssistedFactory
+import com.r3d1r4ph.visualnovel.di.MainViewModelAssistedFactory
 import com.r3d1r4ph.visualnovel.ui.utils.Utils
 import com.r3d1r4ph.visualnovel.ui.viewmodel.MainViewModel
 import com.r3d1r4ph.visualnovel.ui.viewmodel.MainViewModelFactory

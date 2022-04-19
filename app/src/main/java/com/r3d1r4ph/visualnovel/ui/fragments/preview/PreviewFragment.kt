@@ -19,10 +19,10 @@ class PreviewFragment : BaseFragment(R.layout.fragment_preview) {
         super.initViewByScreen(screen)
 
         previewTitleTextView.text = getStringByResourceName(screen.message)
-        previewButton.text = getStringByResourceName(screen.actions[0].message)
+        previewButton.text = getStringByResourceName(screen.actions.first().message)
 
         previewButton.setOnClickListener {
-            navigateByScreenId(screen.actions[0].toScreen)
+            navigateByScreenId(screen.actions.first().toScreen)
         }
     }
 

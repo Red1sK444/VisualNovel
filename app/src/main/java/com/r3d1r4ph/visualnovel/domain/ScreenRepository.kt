@@ -1,4 +1,7 @@
-package com.r3d1r4ph.visualnovel.domain.models
+package com.r3d1r4ph.visualnovel.domain
+
+import com.r3d1r4ph.visualnovel.domain.models.Screen
+import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 
 interface ScreenRepository {
     fun getScreenById(id: Int): Screen

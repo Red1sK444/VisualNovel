@@ -2,7 +2,7 @@ package com.r3d1r4ph.visualnovel.data
 
 import com.r3d1r4ph.visualnovel.common.exceptions.LoadScreensException
 import com.r3d1r4ph.visualnovel.data.dto.ScreenDto
-import com.r3d1r4ph.visualnovel.data.utils.Utils
+import com.r3d1r4ph.visualnovel.data.utils.JsonParser
 import javax.inject.Inject
 
 class ScreenDataSourceImpl @Inject constructor() : ScreenDataSource {
@@ -19,10 +19,6 @@ class ScreenDataSourceImpl @Inject constructor() : ScreenDataSource {
 
     override fun getScreenCount() = screenList.size
 
-    override fun loadScreens(jsonString: String): Boolean {
-        val res = screenList.addAll(Utils.parseJsonToClassByType<List<ScreenDto>>(jsonString))
-        screenList
-        return res
-    }
-
+    override fun loadScreens(jsonString: String): Boolean =
+        screenList.addAll(JsonParser.parseJsonToClassByType<List<ScreenDto>>(jsonString))
 }

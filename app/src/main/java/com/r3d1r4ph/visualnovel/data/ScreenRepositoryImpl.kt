@@ -1,7 +1,7 @@
 package com.r3d1r4ph.visualnovel.data
 
 import com.r3d1r4ph.visualnovel.domain.models.Screen
-import com.r3d1r4ph.visualnovel.domain.models.ScreenRepository
+import com.r3d1r4ph.visualnovel.domain.ScreenRepository
 import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 import javax.inject.Inject
 

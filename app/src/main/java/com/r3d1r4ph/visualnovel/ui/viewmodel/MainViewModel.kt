@@ -24,12 +24,11 @@ class MainViewModel @AssistedInject constructor(
     init {
         Timber.i("begin ${Thread.currentThread().name}")
         viewModelScope.launch {
-            Timber.i("ViewModel 1 ${Thread.currentThread().name}")
             val result = loadScreensUseCase.invoke(screensJsonString)
             if (result.isFailure) {
                 when (result.exceptionOrNull()) {
-                    is LoadScreensException -> _exceptionId.postValue(R.string.load_screen_exception)
-                    else -> _exceptionId.postValue(R.string.unknown_exception)
+                    is LoadScreensException -> _exceptionId.value = R.string.load_screen_exception
+                    else -> _exceptionId.value = R.string.unknown_exception
                 }
             }
             Timber.i("ViewModel 1 end ${Thread.currentThread().name}")

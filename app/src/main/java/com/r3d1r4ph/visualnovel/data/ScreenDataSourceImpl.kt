@@ -3,14 +3,17 @@ package com.r3d1r4ph.visualnovel.data
 import com.r3d1r4ph.visualnovel.common.exceptions.LoadScreensException
 import com.r3d1r4ph.visualnovel.data.dto.ScreenDto
 import com.r3d1r4ph.visualnovel.data.utils.JsonParser
+import com.r3d1r4ph.visualnovel.domain.interfaces.ScreenDataSource
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class ScreenDataSourceImpl @Inject constructor() : ScreenDataSource {
 
     private val screenList = mutableListOf<ScreenDto>()
 
-    override fun getScreenById(id: Int): ScreenDto {
-        return if (screenList.isEmpty()) {
+    override suspend fun getScreenById(id: Int): ScreenDto = withContext(Dispatchers.IO) {
+        if (screenList.isEmpty()) {
             throw LoadScreensException()
         } else {
             screenList[id - 1]
@@ -19,6 +22,7 @@ class ScreenDataSourceImpl @Inject constructor() : ScreenDataSource {
 
     override fun getScreenCount() = screenList.size
 
-    override fun loadScreens(jsonString: String): Boolean =
+    override suspend fun loadScreens(jsonString: String): Boolean = withContext(Dispatchers.IO) {
         screenList.addAll(JsonParser.parseJsonToClassByType<List<ScreenDto>>(jsonString))
+    }
 }

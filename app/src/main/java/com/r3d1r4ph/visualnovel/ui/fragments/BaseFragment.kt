@@ -27,14 +27,6 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
     protected abstract val viewBinding: ViewBinding
     protected abstract val args: NavArgs
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val inflater = TransitionInflater.from(requireContext())
-        exitTransition = inflater.inflateTransition(R.transition.fade)
-        enterTransition = inflater.inflateTransition(R.transition.slide_right)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initObservers()

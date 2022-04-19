@@ -6,10 +6,7 @@ import com.r3d1r4ph.visualnovel.common.exceptions.LoadScreensException
 import com.r3d1r4ph.visualnovel.domain.usecases.LoadScreensUseCase
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class MainViewModel @AssistedInject constructor(

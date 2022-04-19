@@ -7,6 +7,7 @@ import com.r3d1r4ph.visualnovel.domain.models.Screen
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenByIdUseCase
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenTypeByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
@@ -35,7 +36,7 @@ open class ScreenViewModel @Inject constructor(
         get() = _exceptionId.map { it }
 
     init {
-        Timber.i("ViewModel screen ${Thread.currentThread().name}")
+        //Timber.i("ViewModel screen ${Thread.currentThread().name}")
 
         val screenId = state.get<Int>(SCREEN_ID)
         if (screenId != null) {

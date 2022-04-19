@@ -21,7 +21,6 @@ abstract class BaseFragment(@LayoutRes fragmentIdRes: Int) : Fragment(fragmentId
 
     companion object {
         private const val DRAWABLE = "drawable"
-
     }
 
     protected open val viewModel by viewModels<ScreenViewModel>()

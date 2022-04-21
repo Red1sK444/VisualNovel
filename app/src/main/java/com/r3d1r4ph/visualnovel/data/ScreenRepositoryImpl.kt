@@ -16,7 +16,7 @@ class ScreenRepositoryImpl @Inject constructor(
     override suspend fun getScreenTypeById(id: Int): ScreenTypeEnum =
         screenDataSource.getScreenById(id).screenType
 
-    override fun isScreensLoaded() =
+    override suspend fun isScreensLoaded() =
         screenDataSource.getScreenCount() > 0
 
     override suspend fun loadScreens(jsonString: String) =

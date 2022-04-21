@@ -4,8 +4,10 @@ import androidx.lifecycle.*
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.common.exceptions.LoadScreensException
 import com.r3d1r4ph.visualnovel.domain.models.Screen
+import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenByIdUseCase
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenTypeByIdUseCase
+import com.r3d1r4ph.visualnovel.domain.usecases.UseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

@@ -4,8 +4,10 @@ import androidx.lifecycle.*
 import com.r3d1r4ph.visualnovel.R
 import com.r3d1r4ph.visualnovel.common.exceptions.LoadScreensException
 import com.r3d1r4ph.visualnovel.domain.models.Screen
+import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenByIdUseCase
 import com.r3d1r4ph.visualnovel.domain.usecases.GetScreenTypeByIdUseCase
+import com.r3d1r4ph.visualnovel.domain.usecases.UseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -50,13 +52,12 @@ open class ScreenViewModel @Inject constructor(
         viewModelScope.launch {
             val result = getScreenTypeByIdUseCase.invoke(screenId)
             if (result.isSuccess) {
-                _openNextScreen.postValue(
+                _openNextScreen.value =
                     OpenScreenArgs(
                         screenId = screenId,
                         name = name,
                         screenType = result.getOrThrow()
                     )
-                )
             } else {
                 handleException(result.exceptionOrNull())
             }
@@ -79,8 +80,8 @@ open class ScreenViewModel @Inject constructor(
 
     private fun handleException(exception: Throwable?) {
         when (exception) {
-            is LoadScreensException -> _exceptionId.postValue(R.string.load_screen_exception)
-            else -> _exceptionId.postValue(R.string.unknown_exception)
+            is LoadScreensException -> _exceptionId.value = R.string.load_screen_exception
+            else -> _exceptionId.value = R.string.unknown_exception
         }
     }
 }

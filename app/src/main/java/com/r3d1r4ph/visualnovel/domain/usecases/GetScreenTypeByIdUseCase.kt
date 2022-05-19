@@ -1,16 +1,23 @@
 package com.r3d1r4ph.visualnovel.domain.usecases
 
-import com.r3d1r4ph.visualnovel.domain.models.ScreenRepository
+import com.r3d1r4ph.visualnovel.domain.interfaces.ScreenRepository
 import com.r3d1r4ph.visualnovel.domain.models.ScreenTypeEnum
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class GetScreenTypeByIdUseCase @Inject constructor(
+interface GetScreenTypeByIdUseCase : UseCase<Int, Result<ScreenTypeEnum>>
+
+class GetScreenTypeByIdUseCaseImpl @Inject constructor(
     private val screenRepository: ScreenRepository
-) {
-    operator fun invoke(screenId: Int): Result<ScreenTypeEnum> =
+) : GetScreenTypeByIdUseCase {
+    override suspend operator fun invoke(input: Int): Result<ScreenTypeEnum> = withContext(
+        Dispatchers.IO
+    ) {
         try {
-            Result.success(screenRepository.getScreenTypeById(screenId))
+            Result.success(screenRepository.getScreenTypeById(input))
         } catch (t: Throwable) {
             Result.failure(t)
         }
+    }
 }

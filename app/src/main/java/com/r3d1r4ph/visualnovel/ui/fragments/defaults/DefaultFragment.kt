@@ -1,6 +1,7 @@
 package com.r3d1r4ph.visualnovel.ui.fragments.defaults
 
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -13,6 +14,10 @@ import com.r3d1r4ph.visualnovel.ui.fragments.BaseFragment
 
 class DefaultFragment : BaseFragment(R.layout.fragment_default) {
 
+    private companion object {
+        const val SCREEN_WITH_NAME_ID = 3
+    }
+
     override val viewBinding by viewBinding(FragmentDefaultBinding::bind)
     override val args: DefaultFragmentArgs by navArgs()
 
@@ -20,7 +25,7 @@ class DefaultFragment : BaseFragment(R.layout.fragment_default) {
         super.initViewByScreen(screen)
 
         defaultMessageTextView.text =
-            if (screen.id == 3) {
+            if (screen.id == SCREEN_WITH_NAME_ID) {
                 val name: String = args.name ?: getString(R.string.empty)
                 getStringByResourceName(screen.message, name)
             } else {
@@ -31,7 +36,7 @@ class DefaultFragment : BaseFragment(R.layout.fragment_default) {
             val actionButton = root.findViewById<MaterialButton>(id)
             if (screen.actions.size > index) {
                 with(actionButton) {
-                    visibility = View.VISIBLE
+                    isVisible = true
 
                     text = getStringByResourceName(screen.actions[index].message)
                     setOnClickListener {

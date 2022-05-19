@@ -13,6 +13,8 @@
         <action
             android:id="@+id/action_previewFragment_to_inputFragment"
             app:destination="@id/inputFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true">
             <argument
@@ -22,6 +24,8 @@
         <action
             android:id="@+id/action_previewFragment_self"
             app:destination="@id/previewFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true">
             <argument
@@ -41,6 +45,8 @@
         <action
             android:id="@+id/action_inputFragment_to_defaultFragment"
             app:destination="@id/defaultFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true">
             <argument
@@ -63,6 +69,8 @@
         <action
             android:id="@+id/action_defaultFragment_self"
             app:destination="@id/defaultFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true">
             <argument
@@ -72,6 +80,8 @@
         <action
             android:id="@+id/action_defaultFragment_to_previewFragment"
             app:destination="@id/previewFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true">
             <argument

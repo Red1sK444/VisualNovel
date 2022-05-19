@@ -5,8 +5,3 @@ enum class ScreenTypeEnum {
     INPUT,
     DEFAULT
 }
-
-//fun ScreenTypeEnum.getDirection() =
-//    when (this) {
-//        ScreenTypeEnum.PREVIEW -> R.id
-//    }
